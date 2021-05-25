@@ -22,7 +22,7 @@ def main():
 
     # função para fazer as previsões
     def predict_chur():
-        data_new = data.drop(['total_day_minutes', 'total_eve_minutes', 'total_night_minutes', 'total_intl_minutes'], axis=1)
+        data_new = data.drop(['id', 'total_day_minutes', 'total_eve_minutes', 'total_night_minutes', 'total_intl_minutes'], axis=1)
         return loaded_model.predict(data_new)
 
 
@@ -174,7 +174,7 @@ def main():
 
             data_df = data.copy()
             st.header('Arquivo com a previsões do modelo para cada cliente')
-            data_new = data.drop(['total_day_minutes', 'total_eve_minutes', 'total_night_minutes', 'total_intl_minutes'], axis=1)
+            data_new = data.drop(['id', 'total_day_minutes', 'total_eve_minutes', 'total_night_minutes', 'total_intl_minutes'], axis=1)
             data_df["Previsão_Churn"] = loaded_model.predict(data_new)
             data_df["Proba_no"] = loaded_model.predict_proba(data_new)[:, 0]
             data_df["Proba_yes"] = loaded_model.predict_proba(data_new)[:, 1]
