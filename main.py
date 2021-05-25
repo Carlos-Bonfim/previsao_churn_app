@@ -18,7 +18,7 @@ def main():
 
     # função para importar o modelo treinado
     def load_model():
-        return pickle.load(open('../notebook/RF_model_trained.sav', 'rb'))
+        return pickle.load(open('RF_model_trained.sav', 'rb'))
 
     # função para fazer as previsões
     def predict_chur():
