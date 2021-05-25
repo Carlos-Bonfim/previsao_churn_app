@@ -14,7 +14,7 @@ def main():
     # funçãp para carregar o dataset
     #@st.cache(allow_output_mutation=True) # coloca o streamlit em cache para acelerar o processo
     def get_data():
-        return pd.read_csv("../dados/test.csv")
+        return pd.read_csv("dados/test.csv")
 
     # função para importar o modelo treinado
     def load_model():
