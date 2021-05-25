@@ -235,8 +235,8 @@ def main():
             st.dataframe(local_df)
 
             local_df["Previsoes"] = loaded_model.predict(local_df)
-            local_df["Proba_no"] = loaded_model.predict_proba(local_df)[:, 0]
-            local_df["Proba_yes"] = loaded_model.predict_proba(local_df)[:, 1]
+            # local_df["Proba_no"] = loaded_model.predict_proba(local_df)[:, 0]
+            # local_df["Proba_yes"] = loaded_model.predict_proba(local_df)[:, 1]
 
             if btn_predict:
                 str_pred = {0: "Não", 1: "Sim"}
@@ -245,8 +245,8 @@ def main():
                 result_pred = str(local_df["Previsoes"].map(str_pred)[0])
                 st.write(result_pred)
 
-                result_prob_no = "A probabilidade estimada é de " + str(round(local_df["Proba_no"][0]*100, 2)) + "%"
-                result_prob_yes = "A probabilidade estimada é de " + str(round(local_df["Proba_yes"][0]*100, 2)) + "%"
+                result_prob_no = "A probabilidade estimada é de " + str(round(loaded_model.predict_proba(local_df)[:, 0]*100, 2)) + "%"
+                result_prob_yes = "A probabilidade estimada é de " + str(round(loaded_model.predict_proba(local_df)[:, 1]*100, 2)) + "%"
                 st.write(str(np.where(local_df["Previsoes"] == 0, result_prob_no, result_prob_yes)))
 
 
