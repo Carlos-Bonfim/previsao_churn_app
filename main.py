@@ -246,7 +246,7 @@ def main():
                 result_pred = str(local_df["Previsoes"].map(str_pred)[0])
                 st.write(result_pred)
 
-                result_prob_no = "A probabilidade estimada é de " + str(loaded_model.predict_proba(local_df1)[:, 0]*100) + "%"
+                result_prob_no = "A probabilidade estimada é de " + (loaded_model.predict_proba(local_df1)[:, 0]*100).round(2) + "%"
                 result_prob_yes = "A probabilidade estimada é de " + str(loaded_model.predict_proba(local_df1)[:, 1]*100) + "%"
                 st.write(str(np.where(local_df["Previsoes"] == 0, result_prob_no, result_prob_yes)))
 
